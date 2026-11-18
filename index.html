@@ -3,6 +3,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nepal Gold & Silver Tracker</title>
 <style>
+.about{margin-top:14px}
+.about h2{font-size:18px;margin:0 0 6px}
+.about h3{font-size:14px;margin:14px 0 4px}
+.about p{margin:4px 0;font-size:14px}
+.about .terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:8px}
+.about .term{border:1px solid var(--bd);border-top:3px solid var(--acc);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.about .term b{display:block;margin-bottom:2px}
+.about .warn{margin-top:14px;padding:10px 12px;border-left:4px solid var(--dn);background:color-mix(in srgb,var(--dn) 8%,transparent);border-radius:6px;font-size:13.5px}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#faf8f3;--card:#fff;--tx:#1f1c14;--mut:#7a7466;--bd:#e6e1d4;--up:#1e8e5a;--dn:#d23f3f;--grid:#efeadc;--acc:#c99a14;--e1:#3b82f6;--e2:#f97316}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#14130f;--card:#1e1c16;--tx:#f1ede0;--mut:#9a9482;--bd:#34311f;--grid:#2a2719;--up:#3cc17f;--dn:#f06565}}
@@ -56,6 +64,21 @@ ul{margin:6px 0;padding-left:0;list-style:none;font-size:13.5px}li{margin:3px 0}
 <div class="ch"><canvas id="c3"></canvas></div>
 </div>
 <div class="two"><div class="card" id="sig"></div><div class="card" id="prd"></div></div>
+<section class="card about" id="about">
+<h2>About This Tracker</h2>
+<p>This tracker helps people in Nepal follow gold and silver prices in NPR, per tola and per 10 gram, and see how prices have moved over time.</p>
+<h3>Where the prices come from</h3>
+<p>Rates are the daily hallmark (24K) gold and silver prices set by FENEGOSIDA, the Federation of Nepal Gold and Silver Dealers’ Association. An automatic job collects them each business day. There is no new rate on Saturdays and public holidays. The 10 gram price is worked out from the tola price (1 tola = 11.6638 g).</p>
+<h3>How the charts work</h3>
+<p>Each bar is one day. In candle view, green means the price rose that day and red means it fell. Line view joins the daily prices. Only one rate is published per day, so the thin lines on the candles are estimates. The shaded area, if you see it, is simulated data used only to warm up the indicators.</p>
+<h3>The indicators in simple words</h3>
+<div class="terms">
+<div class="term"><b>EMA</b>A smoothed average of recent prices that gives newer days more weight. When the fast line (9 days) crosses above the slow line (21 days), prices may be turning up.</div>
+<div class="term"><b>RSI</b>A score from 0 to 100 showing how strongly the price has been rising or falling. Above 70 can mean overheated, and below 30 can mean oversold.</div>
+<div class="term"><b>MACD</b>Compares a fast and a slow average to show momentum. Bars above the middle line mean upward momentum, and bars below mean downward.</div>
+</div>
+<div class="warn"><b>Disclaimer.</b> Indicators, signals and forecasts here are informational estimates based on past prices. They are not financial advice and can be wrong. Check current rates with a trusted dealer before buying or selling.</div>
+</section>
 <p class="note"><b>Data notes.</b> Rates are FENEGOSIDA figures collected by an automated daily job into prices.json; days marked interpolated were filled in between published rates. FENEGOSIDA publishes one rate per day, so each candle opens at the previous rate and closes at that day’s rate; wick lengths are estimated. The shaded 75 days before the first real rate are modeled, not real prices, and exist only to warm up EMA/MACD. 10 g = tola × 10 ÷ 11.6638. Rates refresh automatically each Nepali business day. Signals and the forecast are simple statistical rules, not financial advice.</p>
 </main>
 <script>
