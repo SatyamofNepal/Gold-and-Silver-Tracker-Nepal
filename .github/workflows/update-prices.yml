@@ -1,7 +1,7 @@
 name: Update prices
 on:
   schedule:
-    - cron: "20 9,15 * * 0-5"
+    - cron: "*/30 5-14 * * 0-5"
   workflow_dispatch:
 permissions:
   contents: write
