@@ -1,13 +1,19 @@
 name: Update prices
 on:
   schedule:
+    # Check every 30 minutes from 10:45 to 20:15 Nepal time (05:00-14:30 UTC), Sunday to Friday.
+    # Most runs change nothing; a run only saves when a new rate is available.
     - cron: "*/30 5-14 * * 0-5"
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
